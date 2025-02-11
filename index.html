@@ -89,9 +89,9 @@
     </div>
 
     <script>
-        let noBtn = document.getElementById("noBtn");
-        let heart = document.getElementById("heart");
-        let size = 18; // Initial font size in px
+    let noBtn = document.getElementById("noBtn");
+    let heart = document.getElementById("heart");
+    let size = 18; // Initial font size in px
 
         function showValentine() {
             let name = document.getElementById("nameInput").value.trim();
@@ -107,19 +107,20 @@
         }
 
         function sayYes() {
-            heart.innerHTML = "Tayo na, wala nang bawian";
-            heart.classList.add("transformed"); // Add animation class
-            heart.style.cursor = "default"; // Disable clicking
-        }
+        let heartSpan = document.getElementById("heart");
+        heartSpan.innerHTML = "Yay! You made my day! ❤️😊"; // Change the text
+        heartSpan.classList.add("transformed"); // Apply animation
+        heartSpan.style.cursor = "default"; // Disable clicking
+    }
 
-        function shrinkNo() {
-            size -= 2; // Reduce size
-            noBtn.style.fontSize = size + "px";
-            noBtn.style.padding = (size / 2) + "px"; // Adjust padding
-            if (size <= 5) {
-                noBtn.style.display = "none"; // Hide when too small
-            }
+    function shrinkNo() {
+        size -= 2; // Reduce size
+        noBtn.style.fontSize = size + "px";
+        noBtn.style.padding = (size / 2) + "px"; // Adjust padding
+        if (size <= 5) {
+            noBtn.style.display = "none"; // Hide when too small
         }
+    }
     </script>
 
 </body>
