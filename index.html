@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffe6f2;
+            margin-top: 100px;
+        }
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 42px;
+            color: #ff4d94;
+        }
+        .heart {
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+        .heart:hover {
+            transform: scale(1.2);
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 25px;
+        }
+        .yes {
+            background-color: #ff4d4d;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .no {
+            background-color: #ffcccc;
+            color: black;
+            font-weight: bold;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .transformed {
+            font-size: 28px;
+            color: #ff4d94;
+            transform: scale(1.5);
+        }
+        .hidden {
+            display: none;
+        }
+        #nameInput {
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #ff4d94;
+            border-radius: 10px;
+            text-align: center;
+        }
+        #submitName {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Name Input Section -->
+    <h1>Enter Your Name:</h1>
+    <input type="text" id="nameInput" placeholder="Your Name">
+    <button id="submitName" onclick="showValentine()">Submit</button>
+
+    <!-- Valentine Question (Hidden Initially) -->
+    <div id="valentineSection" class="hidden">
+        <h1 id="valentineMessage">Will You Be My Valentine? <span class="heart" id="heart" onclick="sayYes()">❤️</span></h1>
+        <button class="btn yes" onclick="sayYes()">Yes</button>
+        <button class="btn no" id="noBtn" onclick="shrinkNo()">If you say no, I will be sad.</button>
+    </div>
+
+    <script>
+        let noBtn = document.getElementById("noBtn");
+        let heart = document.getElementById("heart");
+        let size = 18; // Initial font size in px
+
+        function showValentine() {
+            let name = document.getElementById("nameInput").value.trim();
+            if (name === "") {
+                alert("Please enter your name first!");
+                return;
+            }
+
+            document.getElementById("valentineMessage").innerHTML = `Will You Be My Valentine, ${name}? <span class="heart" id="heart" onclick="sayYes()">❤️</span>`;
+            document.getElementById("valentineSection").classList.remove("hidden");
+            document.getElementById("nameInput").style.display = "none";
+            document.getElementById("submitName").style.display = "none";
+        }
+
+        function sayYes() {
+            heart.innerHTML = "Tayo na, wala nang bawian";
+            heart.classList.add("transformed"); // Add animation class
+            heart.style.cursor = "default"; // Disable clicking
+        }
+
+        function shrinkNo() {
+            size -= 2; // Reduce size
+            noBtn.style.fontSize = size + "px";
+            noBtn.style.padding = (size / 2) + "px"; // Adjust padding
+            if (size <= 5) {
+                noBtn.style.display = "none"; // Hide when too small
+            }
+        }
+    </script>
+
+</body>
+</html>
