@@ -89,38 +89,26 @@
     </div>
 
     <script>
-        let noBtn = document.getElementById("noBtn");
-        let heart = document.getElementById("heart");
-        let size = 18; // Initial font size in px
+    let noBtn = document.getElementById("noBtn");
+    let heart = document.getElementById("heart");
+    let valentineMessage = document.getElementById("valentineMessage"); // Get the full text
+    let size = 18; // Initial font size in px
 
-        function showValentine() {
-            let name = document.getElementById("nameInput").value.trim();
-            if (name === "") {
-                alert("Please enter your name first!");
-                return;
-            }
+    function sayYes() {
+        valentineMessage.innerHTML = "Yay! You made my day! ❤️😊"; // Change full message
+        valentineMessage.classList.add("transformed"); // Apply animation
+        heart.style.display = "none"; // Hide the heart span
+    }
 
-            document.getElementById("valentineMessage").innerHTML = `Will You Be My Valentine, ${name}? <span class="heart" id="heart" onclick="sayYes()">❤️</span>`;
-            document.getElementById("valentineSection").classList.remove("hidden");
-            document.getElementById("nameInput").style.display = "none";
-            document.getElementById("submitName").style.display = "none";
+    function shrinkNo() {
+        size -= 2; // Reduce size
+        noBtn.style.fontSize = size + "px";
+        noBtn.style.padding = (size / 2) + "px"; // Adjust padding
+        if (size <= 5) {
+            noBtn.style.display = "none"; // Hide when too small
         }
-
-        function sayYes() {
-            heart.innerHTML = "Tayo na, wala nang bawian";
-            heart.classList.add("transformed"); // Add animation class
-            heart.style.cursor = "default"; // Disable clicking
-        }
-
-        function shrinkNo() {
-            size -= 2; // Reduce size
-            noBtn.style.fontSize = size + "px";
-            noBtn.style.padding = (size / 2) + "px"; // Adjust padding
-            if (size <= 5) {
-                noBtn.style.display = "none"; // Hide when too small
-            }
-        }
-    </script>
+    }
+</script>
 
 </body>
 </html>
